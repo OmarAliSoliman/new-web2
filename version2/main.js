@@ -1,36 +1,30 @@
 
 //local storage
-var names=[];
+var actions=[];
 const ac = {
     "getEventType": "",
     "getEventTarget": "",
     "getEventTime": ""
   };
-
+  var ob = Object.create(ac);
   function showEvents()
   {
-   for(i=0;i<names.length;i++){
-     $.ajax(
-         { 
-               
-      type: "POST",
-      url: "ajax.php",
-      data: {"data": JSON.stringify(names[i])},
-      success: function(response)
-      {
-        names=[];
-        window.localStorage.clear();
-      } 
+    for(i=0;i<actions.length;i++){
+      $.ajax(
+        {
+          type: "POST",
+          url: "ajax.php",
+          data: {"data": JSON.stringify(actions[i])},
+          success: function(response)
+          {
+            actions=[];
+            window.localStorage.clear();
+          }
+        }
+        );
+      }
     }
-    
-    );
-   
-   
-    }
-   
- 
-  }
-  setInterval( showEvents(), 5000);
+  setInterval( showEvents, 5000);
  
 
 window.onload = function (e) {
@@ -39,10 +33,9 @@ window.onload = function (e) {
     ob['getEventTarget'] = e.target;
     ob['getEventTime'] = e.timeStamp;
     
-    var names=[];
-    names.push(ob);
-    //names.push(JSON.parse(localStorage.getItem('session')));
-    localStorage.setItem('session', JSON.stringify(names));  
+    actions.push(ob);
+    
+    localStorage.setItem('session', JSON.stringify(actions));  
      
   };
   
@@ -50,11 +43,8 @@ window.onload = function (e) {
     ob['getEventType'] = e.type;
     ob['getEventTarget'] = e.target;
     ob['getEventTime'] = e.timeStamp;
-    
-    //var names=[];
-    names.push(ob);
-    //names.push(JSON.parse(localStorage.getItem('session')));
-    localStorage.setItem('session', JSON.stringify(names));
+    actions.push(ob);
+    localStorage.setItem('session', JSON.stringify(actions));
     
     
   };
@@ -96,9 +86,9 @@ genrateButton.addEventListener('click', function() {
   ob['getEventTime'] = event.timeStamp;
   
   
-  names.push(ob);
+  actions.push(ob);
   
-  localStorage.setItem('session', JSON.stringify(names));
+  localStorage.setItem('session', JSON.stringify(actions));
 
 });
 
@@ -151,9 +141,9 @@ function create(char, textValue) {
       ob['getEventTarget'] = event.target;
       ob['getEventTime'] = event.timeStamp;
       
-      names.push(ob);
+      actions.push(ob);
       
-      localStorage.setItem('session', JSON.stringify(names));
+      localStorage.setItem('session', JSON.stringify(actions));
 
 
     });
@@ -162,23 +152,23 @@ function create(char, textValue) {
 
  
 
-var eve = document.getElementById("events");  
-    eve.addEventListener("click", function()
-     { 
-          $.ajax(
-              {    
-                   "type": "GET",
-                    "url": "ajax.php",
-                    "data": {"data": ""},
-                    "success": function(response)
-                    {   
-                      if(response)
-                      {   
-                         var data = JSON.parse(response);
-                         console.log(data);
-                               }
-                    } 
-                 });
-    }); 
+var eve = document.querySelector("#events");  
+eve.addEventListener("click", function(e)
+{
+  $.ajax(
+    {
+      type: "GET",
+      url: "ajax.php",
+      data: {"data": ""},
+      success: function(response)
+      {
+        if(response)
+        {
+          var data = JSON.parse(response);
+          console.log(data);
+        }
+      } 
+    });
+  }); 
 
       

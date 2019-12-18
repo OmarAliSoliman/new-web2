@@ -1,0 +1,104 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-color: #EEE;
+}
+
+.header{
+  text-align: center;
+  padding-top: 30px;
+  width: 600px;
+  height: 100px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.learn{
+  text-transform: capitalize;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  letter-spacing: 5px;
+}
+
+.numberletters{
+  text-transform: capitalize;
+  font-weight: bold;
+  font-family: cursive;
+  color: teal;
+}
+
+#letter{
+  height: 30px;
+  width: 100px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+}
+
+.generate{
+  border: none;
+  background-color: rgb(1, 97, 97);
+  color: #fff;
+  border: 1px solid #EEE;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.error{
+  display: inline-block;
+  margin-top: 20px;
+  border: 1px solid red;
+  background-color: red;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.letters{
+  width: 600px;
+  margin: 0 auto;
+  height: 250px;
+  text-align: center;
+  padding: 10px;
+  float: left;
+}
+
+.pic{
+  width: 600px;
+  margin: 0 auto;
+  height: 600px;
+  margin-top: 5px;
+  border-radius: 9px;
+  margin-right: 10px;
+  float: right;
+}
+
+.btn{
+  width: 90px;
+  height: 40px;
+  background-color: teal;
+  border: 1px solid teal;
+  color: #fff;
+  margin-right: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.btn:hover{
+  cursor: pointer;
+}
+
+.image{
+  width: 600px;
+  height: 450px;
+  border-radius: 5px;
+}
